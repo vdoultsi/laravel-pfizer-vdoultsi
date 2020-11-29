@@ -1,23 +1,28 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 
 class UsersController extends Controller
 {
+    
     public function index(){
 
-        $users = [
-            'John',
-            'Maria'
-        ];
+        $users = User::all();
+                  
+        return response()->json([
+            'users'=>$users,
+            'countUsers'=> $users->count()
+            ]);     
+    }
 
-        $count = count($users);
+    public function show($id) {
+        $user = User::findOrFail($id);
 
-        return [
-            'users' => $users,
-            'count' => $count
-        ];
+        return response()->json(['user'=>$user]);
     }
 }

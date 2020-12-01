@@ -50,6 +50,6 @@ class User extends Authenticatable
     }
 
     public function skills(){
-        return $this -> belongsToMany(Skill::class,'users_skills');
+        return $this -> belongsToMany(Skill::class, 'users_skills');
     }
 }

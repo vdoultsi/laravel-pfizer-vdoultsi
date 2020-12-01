@@ -22,8 +22,14 @@ use \App\Http\Controllers\API\UsersSkillsController;
      return $request->user();
  });
 
- Route::get('/user', [UsersController::class, 'index']);
+ //Route::get('/user', [UsersController::class, 'index']);
+ //Route::get('/users/{id}', [UsersController::class, 'show']);
  //Route::apiResource('/users', UsersController::class, ['only' => 'index']);
- Route::get('/users/{id}', [UsersController::class, 'show']);
- Route::get('/skills', [SkillsController::class, 'index']);
- Route::get('/users/{id}/skills', [UsersSkillsController::class, 'index']);
+ //Route::apiResource('/users', UsersController::class, ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+ Route::apiResource('/users', UsersController::class);
+ //Route::get('/skills', [SkillsController::class, 'index']);
+ Route::apiResource('/skills', SkillsController::class, ['only' => ['index']]);
+ //Route::get('/users/{id}/skills', [UsersSkillsController::class, 'index']);
+ Route::apiResource('/users/{id}/skills', UsersSkillsController::class, ['only' => ['index']]); 
+
+

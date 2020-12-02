@@ -6,6 +6,10 @@ use \App\Http\Controllers\API\UsersController;
 use \App\Http\Controllers\API\SkillsController;
 use \App\Http\Controllers\API\UsersSkillsController;
 use \App\Http\Controllers\API\UsersVacationsController;
+use \App\Http\Controllers\API\DepartmentsController;
+use \App\Http\Controllers\API\DepartmentsUsersController;
+use \App\Http\Controllers\API\DepartmentsManagersController;
+
 
 // namespace App\Http\Controllers\API;
 // /*
@@ -35,5 +39,9 @@ use \App\Http\Controllers\API\UsersVacationsController;
  Route::apiResource('users.skills', UsersSkillsController::class, ['only' => ['index', 'store']]);
  Route::apiResource('/vacations', UsersVacationsController::class);
  Route::apiResource('users.vacations', UsersVacationsController::class); 
+
+ Route::apiResource('departments', DepartmentsController::class);
+ Route::apiResource('departments.users', DepartmentsUsersController::class, ['only' => ['update', 'destroy']]);
+ Route::apiResource('departments.managers', ManagersDepartmentsController::class, ['only' => ['update', 'destroy']]);
 
 
